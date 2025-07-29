@@ -1,0 +1,18 @@
+**/__pycache__/
+**/.vscode/
+detection/output/
+tracking/output/
+test_prioritization/output/
+tracking/__mctrack_preprocess_output/
+data/
+
+# model
+*.pth
+
+# image
+*.jpg
+*.png
+*.pdf
+
+# log file
+*.log

@@ -1,0 +1,6 @@
+[submodule "tracking/framework/3D-Multi-Object-Tracker"]
+	path = tracking/framework/3D-Multi-Object-Tracker
+	url = https://github.com/hailanyi/3D-Multi-Object-Tracker.git
+[submodule "tracking/framework/MCTrack"]
+	path = tracking/framework/MCTrack
+	url = https://github.com/megvii-research/MCTrack.git

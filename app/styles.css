@@ -1,0 +1,140 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.title {
+  padding: 20px;
+  color: white;
+  font-size: xx-large;
+  text-align: center;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+}
+
+.tabs {
+  display: flex;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+}
+
+.tab {
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+  flex: 1;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.tab:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.tab.active {
+  background-color: rgba(255, 255, 255, 0.3);
+  font-weight: bold;
+}
+
+.tab-content {
+  padding: 20px;
+  display: none;
+}
+
+.tab-content.active {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+h2 {
+  color: #333;
+  margin-top: 0;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: -webkit-fill-available;
+  padding-bottom: 20px;
+}
+
+label {
+  display: block;
+  padding-bottom: 5px;
+  color: #555;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+input[type="text"],
+input[type="range"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 8px;
+  background: #ddd;
+  border-radius: 4px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #6e8efb;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+button {
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.checkbox-group,
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.checkbox-item,
+.radio-item {
+  width: 50%;
+  padding-bottom: 5px;
+}

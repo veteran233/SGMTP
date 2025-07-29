@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SGMTP Tools</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="title">SGMTP Tools Interface</div>
+      <div class="tabs">
+        <div class="tab active" onclick="openTab(event, 'tab1')">Detection</div>
+        <div class="tab" onclick="openTab(event, 'tab3')">Tracking</div>
+        <div class="tab" onclick="openTab(event, 'tab4')">Testing</div>
+      </div>
+
+      <div id="tab1" class="tab-content active">
+        <div class="control-group">
+          <label for="dataset-path">Dataset Path</label>
+          <input
+            type="text"
+            id="dataset-path"
+            placeholder="Path to the dataset"
+          />
+        </div>
+        <div class="control-group">
+          <label for="detection-split">Dataset Split</label>
+          <select id="detection-split">
+            <option value="val">Val</option>
+            <option value="test">Test</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label id="second-per-data-label" for="second-per-data"
+            >Second Per Data : 10</label
+          >
+          <input
+            type="range"
+            id="second-per-data"
+            min="2"
+            max="20"
+            value="10"
+          />
+        </div>
+        <div class="control-group">
+          <label id="stride-label" for="stride">Stride : 5</label>
+          <input type="range" id="stride" min="2" max="20" value="5" />
+        </div>
+        <div class="control-group">
+          <h2>Detector</h2>
+          <div class="checkbox-group">
+            <div class="checkbox-item">
+              <label for="detection-det-pp">PointPillar</label>
+              <input type="checkbox" id="detection-det-pp" checked />
+            </div>
+            <div class="checkbox-item">
+              <label for="detection-det-pv-rcnn">PV-RCNN</label>
+              <input type="checkbox" id="detection-det-pv-rcnn" checked />
+            </div>
+          </div>
+        </div>
+        <div class="control-group" style="width: 100%">
+          <button onclick="runDetection()">Run</button>
+        </div>
+      </div>
+
+      <div id="tab2" class="tab-content">
+        <div class="control-group">
+          <label for="tracking-split">Dataset Split</label>
+          <select id="tracking-split">
+            <option value="val">Val</option>
+            <option value="test">Test</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <h2>Detector</h2>
+          <div class="checkbox-group">
+            <div class="checkbox-item">
+              <label for="tracking-det-pp">PointPillar</label>
+              <input type="checkbox" id="tracking-det-pp" checked />
+            </div>
+            <div class="checkbox-item">
+              <label for="tracking-det-pv-rcnn">PV-RCNN</label>
+              <input type="checkbox" id="tracking-det-pv-rcnn" checked />
+            </div>
+          </div>
+        </div>
+        <div class="control-group">
+          <h2>Tracker</h2>
+          <div class="checkbox-group">
+            <div class="checkbox-item">
+              <label for="tracking-fw-mctrack-online">MCTrack ONLINE</label>
+              <input type="checkbox" id="tracking-fw-mctrack-online" checked />
+            </div>
+            <div class="checkbox-item">
+              <label for="tracking-fw-mctrack-global">MCTrack GLOBAL</label>
+              <input type="checkbox" id="tracking-fw-mctrack-global" checked />
+            </div>
+            <div class="checkbox-item">
+              <label for="tracking-fw-wu-online">CGMOT ONLINE</label>
+              <input type="checkbox" id="tracking-fw-wu-online" checked />
+            </div>
+            <div class="checkbox-item">
+              <label for="tracking-fw-wu-global">CGMOT GLOBAL</label>
+              <input type="checkbox" id="tracking-fw-wu-global" checked />
+            </div>
+          </div>
+        </div>
+        <div class="control-group" style="width: 100%">
+          <button onclick="runTracking()">Run</button>
+        </div>
+      </div>
+
+      <div id="tab3" class="tab-content">
+        <div class="control-group">
+          <label for="testing-split">Dataset Split</label>
+          <select id="testing-split">
+            <option value="val">Val</option>
+            <option value="test">Test</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <h2>Detector</h2>
+          <div class="checkbox-group">
+            <div class="checkbox-item">
+              <label for="testing-det-pp">PointPillar</label>
+              <input type="checkbox" id="testing-det-pp" checked />
+            </div>
+            <div class="checkbox-item">
+              <label for="testing-det-pv-rcnn">PV-RCNN</label>
+              <input type="checkbox" id="testing-det-pv-rcnn" checked />
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <h2>Tracker</h2>
+          <div class="checkbox-group">
+            <div class="checkbox-item">
+              <label for="testing-fw-mctrack-online">MCTrack ONLINE</label>
+              <input type="checkbox" id="testing-fw-mctrack-online" checked />
+            </div>
+            <div class="checkbox-item">
+              <label for="testing-fw-mctrack-global">MCTrack GLOBAL</label>
+              <input type="checkbox" id="testing-fw-mctrack-global" checked />
+            </div>
+            <div class="checkbox-item">
+              <label for="testing-fw-wu-online">CGMOT ONLINE</label>
+              <input type="checkbox" id="testing-fw-wu-online" checked />
+            </div>
+            <div class="checkbox-item">
+              <label for="testing-fw-wu-global">CGMOT GLOBAL</label>
+              <input type="checkbox" id="testing-fw-wu-global" checked />
+            </div>
+          </div>
+        </div>
+        <div class="control-group" style="width: 100%">
+          <button onclick="runTestPrioritization()">Run</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
